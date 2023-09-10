@@ -21,7 +21,6 @@ function serialDateToNiceDate(date) {
   return new Date(Math.round((date)*86400*1000)).toUTCString();
 }
 
-
 function myFunction(item) {
   console.log("My Function running")
   console.log(item);
@@ -66,10 +65,10 @@ function obtainData (){
     
     //  data.Data.forEach(myFunction);
     //  resolve(data);
-      CryptoData.map((item, index) => (
-        setCryptoVol(CryptoVol => [...CryptoVol, item.volume ])
+    // CryptoData.map((item, index) => (
+    //    setCryptoVol(CryptoVol => [...CryptoVol, item.volume ])
       //console.log("Index Array :-" + index + " & " + serialDateToNiceDate(item.time) + " & " + item.volume)
-      ))
+    //  ))
     }
     }
   )
@@ -87,9 +86,7 @@ function obtainData (){
       <button onClick={obtainData}>Obtain Data</button>
         {crypto &&
         <ul><li>
-          {CryptoVol.map((item, index) => (
-          index + " & " + item
-      ))}
+          {CryptoData}
         </li></ul>}
     </div>
   );
