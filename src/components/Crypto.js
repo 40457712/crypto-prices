@@ -3,11 +3,16 @@ import React from 'react';
 //import classes from './Movie.module.css';
 
 const Crypto = (props) => {
+    
+    function serialDateToNiceDate(date) {
+        date = (date/3600/24).toString();
+        return new Date(Math.round((date)*86400*1000)).toUTCString();
+      }
+
   return (
 //    <li className={classes.movie}>
     <li>
-      <h2>{props.time}</h2>
-      <h3>{props.volume}</h3>
+      {serialDateToNiceDate(props.time)} & {props.volume}
     </li>
   );
 };
