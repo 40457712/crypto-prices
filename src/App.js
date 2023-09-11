@@ -1,8 +1,9 @@
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
-import CryptoList from "./components.CryptoList";
-import { button, useState } from 'react';
+import CryptoList from './components/CryptoList';
+
 
 function App() {
 
@@ -60,20 +61,20 @@ function obtainData (){
     if (response) {
     // success
       console.log("Sucess");
-      setCryptoData(livedata);
+      //setCryptoData(livedata);
       //cryptoTemp = [];
-      const data = response.data;
-      console.log(typeof (data.Data));
-      console.log(data.Data);
+      //const data = response.data;
+      //console.log(typeof (data.Data));
+      //console.log(data.Data);
 
-      const transformeddata = data.Data.map((cryptoData) => {
-        return {
-          time: cryptoData.time
-        };
-      })
+      //const transformeddata = data.Data.map((cryptoData) => {
+      //  return {
+      //    time: cryptoData.time
+      //  };
+      //})
 
     //  setCryptoData(transformeddata);
-      console.log(typeof (transformeddata));
+      //console.log(typeof (transformeddata));
       
       //data.Data.forEach(key => {
        // const combined = [...CryptoTime,serialDateToNiceDate(key.time)];
@@ -89,7 +90,7 @@ function obtainData (){
 
 
       //setCryptoData(cryptoTemp);
-      setCrypto(true);
+      //setCrypto(true);
 
       //console.log(CryptoData);
     
@@ -100,7 +101,7 @@ function obtainData (){
   } 
   
   return (
-    <div className="App">
+    <React.Fragment>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -108,11 +109,10 @@ function obtainData (){
         </p>
       </header>
       <button onClick={obtainData}>Obtain Data</button>
-        {crypto}
       <section>
-        <CryptoList crypto={livedata} />
+        <CryptoList cryptos={livedata} />
       </section>
-    </div>
+      </React.Fragment>
   );
 }
 export default App;
