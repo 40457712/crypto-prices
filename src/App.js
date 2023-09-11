@@ -9,11 +9,9 @@ function App() {
 
 console.log("App Starting")
 
-const livedata = [{time: 1694329200, volume: 773213.97},{time: 1696329200, volume: 893437.99}];
+// Dummy Data const livedata = [{time: 1694329200, volume: 773213.97},{time: 1696329200, volume: 893437.99}];
 
-const [crypto, setCrypto] = useState(false);
 const [CryptoVol, setCryptoVol] = useState([]);
-const [CryptoTime, setCryptoTime] = useState([]);
 const [CryptoData, setCryptoData] = useState([]);
 
 function serialDateToNiceDate(date) {
