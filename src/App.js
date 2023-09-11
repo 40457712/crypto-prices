@@ -1,13 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
+import CryptoList from "./components.CryptoList";
 import { button, useState } from 'react';
 
 function App() {
 
-  console.log("App Starting")
-  
-  const [crypto, setCrypto] = useState(false);
+console.log("App Starting")
+
+const livedata = [{time: 1694329200, volume: 773213.97}];
+
+const [crypto, setCrypto] = useState(false);
 const [CryptoVol, setCryptoVol] = useState([]);
 const [CryptoTime, setCryptoTime] = useState([]);
 const [CryptoData, setCryptoData] = useState([]);
@@ -21,27 +24,27 @@ function serialDateToNiceDate(date) {
   return new Date(Math.round((date)*86400*1000)).toUTCString();
 }
 
-function myFunction(item) {
-  console.log("My Function running")
-  console.log(item);
-  const [time, volume] = item;
-  console.log(time);
-}
+//function myFunction(item) {
+//  console.log("My Function running")
+//  console.log(item);
+//  const [time, volume] = item;
+//  console.log(time);
+//}
 
-function processData(item, index){
-  console.log("Process running")
-  cryptoTemp = [];
+//function processData(item, index){
+  //console.log("Process running")
+  //cryptoTemp = [];
   //item.map((item, index) => (
   //  console.log("Index Array :-" + index + item.time + item.volume)
   //  ))
   
-  cryptoTemp.push(serialDateToNiceDate(item.time));
-  cryptoTemp.push(item.volume);
-  cryptoVolume.push(item.volume);
+  //cryptoTemp.push(serialDateToNiceDate(item.time));
+  //cryptoTemp.push(item.volume);
+  //cryptoVolume.push(item.volume);
   // console.log("Temp Array :-" + cryptoTemp);
-  cryptoData.push(cryptoTemp);
-  console.log("Data Array :-" + cryptoData);
-}
+  //cryptoData.push(cryptoTemp);
+  //console.log("Data Array :-" + cryptoData);
+//}
 
 function obtainData (){
   let response = null;
@@ -57,6 +60,7 @@ function obtainData (){
     if (response) {
     // success
       console.log("Sucess");
+      setCryptoData(livedata);
       //cryptoTemp = [];
       const data = response.data;
       console.log(typeof (data.Data));
@@ -64,12 +68,13 @@ function obtainData (){
 
       const transformeddata = data.Data.map((cryptoData) => {
         return {
-          time: cryptoData.time,
-          volume: cryptoData.volume
+          time: cryptoData.time
         };
       })
 
-      setCryptoData(transformeddata);
+    //  setCryptoData(transformeddata);
+      console.log(typeof (transformeddata));
+      
       //data.Data.forEach(key => {
        // const combined = [...CryptoTime,serialDateToNiceDate(key.time)];
       //setCryptoTime(combined);
@@ -103,8 +108,10 @@ function obtainData (){
         </p>
       </header>
       <button onClick={obtainData}>Obtain Data</button>
-        {crypto &&
-        cryptoData}
+        {crypto}
+      <section>
+        <CryptoList crypto={livedata} />
+      </section>
     </div>
   );
 }
