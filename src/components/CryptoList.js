@@ -10,7 +10,7 @@ const CryptoList = (props) =>{
     //    <ul className={classes['movies-list']}>
         <ul>
           {props.cryptos.map((crypto) => (
-            <Crypto
+            <Crypto  key={crypto.time}
               time={crypto.time}
               volume={crypto.volume}
             />

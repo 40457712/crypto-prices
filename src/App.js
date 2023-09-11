@@ -26,21 +26,24 @@ function serialDateToNiceDate(date) {
 }
 
 function fetchCryptoHandler() {
-  fetch('https://min-api.cryptocompare.com/data/exchange/histohour?tsym=BCH&limit=30&api_key=518c2b6d6f2d6282006b26e532bfc1e2b9f5d5184731e3ef885a785d473d6fde')
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      const transformedCrypto = data.results.map((CryptoData) => {
-        return {
-          time: CryptoData.time,
-          volume: CryptoData.volume,
-        };
-      });
-      setCryptoData(transformedCrypto);
-    });
+  let response = null;
+  new Promise(async (resolve, reject) => {
+    try {
+     response = await axios.get("https://min-api.cryptocompare.com/data/exchange/histohour?tsym=BCH&limit=30&api_key=518c2b6d6f2d6282006b26e532bfc1e2b9f5d5184731e3ef885a785d473d6fde");
+    } catch(ex) {
+      response = null;
+    // error
+      console.log(ex);
+      reject(ex);
+    }
+    if (response) {
+    // success
+      const data = response.data;
+      console.log(data.Data);
+      setCryptoData(data.Data);
+    }
 }
-  
+  )}
   return (
     <React.Fragment>
       <header className="App-header">
@@ -48,13 +51,14 @@ function fetchCryptoHandler() {
         <p>
           Crypto Prices
         </p>
+        <button onClick={fetchCryptoHandler}>Obtain Data</button>
       </header>
-      <button onClick={fetchCryptoHandler}>Obtain Data</button>
-      <section>
+      <section className="App-section">
         <CryptoList cryptos={CryptoData} />
       </section>
       </React.Fragment>
   );
 }
+
 export default App;
 
