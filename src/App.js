@@ -57,18 +57,37 @@ function obtainData (){
     if (response) {
     // success
       console.log("Sucess");
+      //cryptoTemp = [];
       const data = response.data;
+      console.log(typeof (data.Data));
       console.log(data.Data);
+
+      const transformeddata = data.Data.map((cryptoData) => {
+        return {
+          time: cryptoData.time,
+          volume: cryptoData.volume
+        };
+      })
+
+      setCryptoData(transformeddata);
+      //data.Data.forEach(key => {
+       // const combined = [...CryptoTime,serialDateToNiceDate(key.time)];
+      //setCryptoTime(combined);
+      //console.log(serialDateToNiceDate(key.time));
+      //console.log(combined);
+      //setCryptoVol(key.volume);
+      //console.log(key.volume);
+      //});;
       
-      setCryptoData(data.Data);
+      //const [value, setValue] = useState([])
+      //setValue([...value, newvalue])
+
+
+      //setCryptoData(cryptoTemp);
       setCrypto(true);
+
+      //console.log(CryptoData);
     
-    //  data.Data.forEach(myFunction);
-    //  resolve(data);
-    // CryptoData.map((item, index) => (
-    //    setCryptoVol(CryptoVol => [...CryptoVol, item.volume ])
-      //console.log("Index Array :-" + index + " & " + serialDateToNiceDate(item.time) + " & " + item.volume)
-    //  ))
     }
     }
   )
@@ -85,9 +104,7 @@ function obtainData (){
       </header>
       <button onClick={obtainData}>Obtain Data</button>
         {crypto &&
-        <ul><li>
-          {CryptoData}
-        </li></ul>}
+        cryptoData}
     </div>
   );
 }
