@@ -16,10 +16,6 @@ const [CryptoVol, setCryptoVol] = useState([]);
 const [CryptoTime, setCryptoTime] = useState([]);
 const [CryptoData, setCryptoData] = useState([]);
 
-let cryptoTemp = [];
-let cryptoVolume = [];
-let cryptoData = [];
-
 function serialDateToNiceDate(date) {
   date = (date/3600/24).toString();
   return new Date(Math.round((date)*86400*1000)).toUTCString();
