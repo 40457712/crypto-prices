@@ -51,8 +51,9 @@ const BarChart = (props) => {
       
         // Normalize data, we'll reduce all sizes to 25% of their original value
         const massagedData = props.data.map(datum =>
-          Object.assign({}, datum, { repos: datum.repos / 100000000 })
-        //Object.assign({}, datum, { volume: datum.volume * 0.25 })
+        //  Object.assign({}, datum, { repos: datum.repos / 100000000 })
+        // Object.assign({}, datum, { volume: datum.volume * 0.25 })
+        Object.assign({}, datum, { volume: datum.volume / 100000000 })
         )
       
         const mostRepos = massagedData.reduce((acc, cur) => {
@@ -69,11 +70,11 @@ const BarChart = (props) => {
             {massagedData.map((datum, index) => (
                 //const itemheight = datum.repos;
                 <Bar
-                    key={datum.name}
+                    key={datum.time}
                     x={index * (itemWidth + itemMargin)}
                     y={0}
                     width={itemWidth}
-                    height={datum.repos}
+                    height={datum.volume}
                 />
                 ))}
           </Chart>

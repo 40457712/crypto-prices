@@ -14,8 +14,6 @@ console.log("App Starting")
 const [CryptoVol, setCryptoVol] = useState([]);
 const [CryptoData, setCryptoData] = useState([]);
 
-
-
 function serialDateToNiceDate(date) {
   date = (date/3600/24).toString();
   return new Date(Math.round((date)*86400*1000)).toUTCString();
