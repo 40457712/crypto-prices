@@ -32,7 +32,7 @@ function fetchCryptoHandler() {
     }
     if (response) {
     // success
-      const data = response.data;
+      const data = response.data.reverse();
       console.log(data.Data);
       setCryptoData(data.Data);
     }

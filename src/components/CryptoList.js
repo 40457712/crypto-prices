@@ -4,8 +4,8 @@ import Crypto from './Crypto';
 // import classes from './MoviesList.module.css';
 
 const CryptoList = (props) =>{
-    console.log("CryptoList");
-    console.log({props});
+   // console.log("CryptoList");
+    //console.log({props});
     return (
     //    <ul className={classes['movies-list']}>
         <ul>
