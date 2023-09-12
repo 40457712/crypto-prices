@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import CryptoList from './components/CryptoList';
+import Barchart from './components/Barchart';
 
 
 function App() {
@@ -13,6 +14,8 @@ console.log("App Starting")
 
 const [CryptoVol, setCryptoVol] = useState([]);
 const [CryptoData, setCryptoData] = useState([]);
+
+
 
 function serialDateToNiceDate(date) {
   date = (date/3600/24).toString();
@@ -47,6 +50,9 @@ function fetchCryptoHandler() {
         </p>
         <button onClick={fetchCryptoHandler}>Obtain Data</button>
       </header>
+      <section className="App-section">
+        <Barchart data={CryptoData} />
+      </section>
       <section className="App-section">
         <CryptoList cryptos={CryptoData} />
       </section>
