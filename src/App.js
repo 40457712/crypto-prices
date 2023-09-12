@@ -23,7 +23,7 @@ function fetchCryptoHandler() {
   let response = null;
   new Promise(async (resolve, reject) => {
     try {
-     response = await axios.get("https://min-api.cryptocompare.com/data/exchange/histohour?tsym=BCH&limit=30&api_key=518c2b6d6f2d6282006b26e532bfc1e2b9f5d5184731e3ef885a785d473d6fde");
+     response = await axios.get("https://min-api.cryptocompare.com/data/exchange/histohour?tsym=WAX&limit=30&api_key=518c2b6d6f2d6282006b26e532bfc1e2b9f5d5184731e3ef885a785d473d6fde");
     } catch(ex) {
       response = null;
     // error
