@@ -3,8 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import CryptoList from './components/CryptoList';
-import Barchart from './components/Barchart';
-
+import BarChart from './components/BarChart';
 
 function App() {
 
@@ -38,6 +37,9 @@ function fetchCryptoHandler() {
       const data = response.data;
       console.log(data.Data.reverse());
       setCryptoData(data.Data);
+      return(
+        <BarChart data={data.Data} />
+      );
     }
 }
   )}
@@ -51,7 +53,7 @@ function fetchCryptoHandler() {
         <button onClick={fetchCryptoHandler}>Obtain Data</button>
       </header>
       <section className="App-section">
-        <Barchart data={CryptoData} />
+      {CryptoData} && <BarChart data={CryptoData} />
       </section>
       <section className="App-section">
         <CryptoList cryptos={CryptoData} />

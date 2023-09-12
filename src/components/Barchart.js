@@ -1,5 +1,31 @@
 import React from 'react';
 
+const data = [
+    {
+      name: 'kentcdodds',
+      repos: 371
+    },
+    {
+      name: 'sindresorhus',
+      repos: 909
+    },
+    {
+      name: 'developit',
+      repos: 222
+    },
+    {
+      name: 'getify',
+      repos: 43
+    },
+    {
+      name: 'btholt',
+      repos: 56
+    },
+    {
+      name: 'kyleshevlin',
+      repos: 82
+    }
+  ]
 //import classes from './Movie.module.css';
 const Chart = ({ children, width, height }) => (
     <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height}>
@@ -8,10 +34,10 @@ const Chart = ({ children, width, height }) => (
   )
   
   const Bar = ({ x, y, width, height }) => (
-    <rect x={x} y={y} width={width} height={height} />
+    <rect x={x} y={y} width={width} height={height} fill={'#0ac'}/>
   )
 
-const Barchart = (data) => {
+const BarChart = () => {
 
         // Width of each bar
         const itemWidth = 20
@@ -36,16 +62,17 @@ const Barchart = (data) => {
         return (
           <Chart width={dataLength * (itemWidth + itemMargin)} height={chartHeight}>
             {massagedData.map((datum, index) => (
-              <Bar
-                key={datum.name}
-                x={index * (itemWidth + itemMargin)}
-                y={0}
-                width={itemWidth}
-                height={datum.repos}
-              />
-            ))}
+                //const itemheight = datum.repos;
+                <Bar
+                    key={datum.name}
+                    x={index * (itemWidth + itemMargin)}
+                    y={0}
+                    width={itemWidth}
+                    height={datum.repos}
+                />
+                ))}
           </Chart>
         )
       };
 
-export default Barchart;
+export default BarChart;
