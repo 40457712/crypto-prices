@@ -53,7 +53,7 @@ function fetchCryptoHandler() {
         <button onClick={fetchCryptoHandler}>Obtain Data</button>
       </header>
       <section className="App-section">
-      {CryptoData} && <BarChart data={CryptoData} />
+      <BarChart data={CryptoData} />
       </section>
       <section className="App-section">
         <CryptoList cryptos={CryptoData} />
