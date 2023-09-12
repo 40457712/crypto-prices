@@ -12,7 +12,7 @@ console.log("App Starting")
 // Dummy Data const livedata = [{time: 1694329200, volume: 773213.97},{time: 1696329200, volume: 893437.99}];
 
 const [CryptoVol, setCryptoVol] = useState([]);
-const [CryptoData, setCryptoData] = useState([]);
+const [CryptoData, setCryptoData] = useState([{time: 1694516400, volume: 3878484823.55}]);
 
 
 
