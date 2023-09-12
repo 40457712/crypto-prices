@@ -56,6 +56,8 @@ const BarChart = (props) => {
         Object.assign({}, datum, { volume: datum.volume / 100000000 })
         )
       
+        console.log('Massaged Data');
+        console.log(massagedData);
         const mostRepos = massagedData.reduce((acc, cur) => {
           const { repos } = cur
           return repos > acc ? repos : acc
